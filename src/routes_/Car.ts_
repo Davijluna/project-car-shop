@@ -1,0 +1,35 @@
+// import { Router } from "express";
+
+// import CarController from '../controllers/Cars';
+// import CarService from '../services/Cars';
+// import Cars from '../models/Cars';
+
+// import { carZodSchema } from '../interfaces/ICar';
+// import ErrorController from '../controllers/Error';
+
+// const router = Router();
+
+// const carModel = new Cars();
+// const carService = new CarService(carModel, carZodSchema);
+// const carController = new CarController(carService);
+
+// Collection
+
+// // Create
+// router.post('/', (req, res) => carController.create(req, res));
+// // Read All
+// router.get('/')
+// router.put('/', (req, res, next) => ErrorController.notAllowed(req, res, next));
+// router.delete('/', (req, res, next) => ErrorController.notAllowed(req, res, next));
+
+// // Resource
+
+// router.post('/:id', (req, res, next) => ErrorController.notAllowed(req, res, next));
+// // Read One
+// router.get('/:id')
+// // Update
+// router.put('/:id')
+// // Delete
+// router.delete('/:id')
+
+// export default router;
