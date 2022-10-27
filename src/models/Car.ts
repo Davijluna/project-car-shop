@@ -6,6 +6,7 @@ const carMongooseSchema = new Schema<ICar>({
   status: Boolean,
   model: String,
   year: Number,
+  color: String,
   buyValue: Number,
   doorsQty: Number,
   seatsQty: Number,
@@ -17,4 +18,5 @@ class Car extends MondoModel<ICar> {
   }
 }
 
-export default Car;
+export default Car; 
+// finalizar por agora ..

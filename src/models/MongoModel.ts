@@ -1,5 +1,8 @@
 import { isValidObjectId, Model, UpdateQuery } from 'mongoose';
 import { IModel } from '../interfaces/IModel';
+import { ErrorTypes } from '../errors/catalog';
+
+// errorCatalog < depois colocar na importação linha 3.
 
 abstract class MondoModel<T> implements IModel<T> {
   protected _model:Model<T>;
@@ -13,25 +16,26 @@ abstract class MondoModel<T> implements IModel<T> {
   }
 
   public async read(): Promise<T[]> {
-    return this.read();
+    return this._model.find();
   }
 
   public async readOne(_id: string): Promise<T | null> { // rever está parte
-    if (!isValidObjectId(_id)) throw Error('InvalidMongoId');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
     return this._model.findOne({ _id });
   }
 
   public async update(_id: string, obj: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('InvalidMongoId');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
     return this._model.findByIdAndUpdate(
       { _id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
-    ); // rever está parte
+    );
+    // rever está parte
   }
 
   public async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('InvalidMongoId');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
     
     return this._model.findByIdAndDelete(_id);
   }
