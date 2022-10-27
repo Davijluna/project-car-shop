@@ -19,12 +19,12 @@ const errorHandler: ErrorRequestHandler = (err: Error | ZodError, _req, res, _ne
   if (mappedError) {
     // dado que o erro está mapeado no nosso catálogo
     // "mappedError" tem valores necessário para responder a requisição
-    const { httpStatus, message } = mappedError;
-    return res.status(httpStatus).json({ message });
+    const { httpStatus, error } = mappedError;
+    return res.status(httpStatus).json({ error });
     // caso seja um erro não mapeado, o mostraremos no log de erros e retornaremos o status 500
   }
   console.error(err);
-  return res.status(500).json({ message: 'internal error' });
+  return res.status(500).json({ error: 'internal error' });
 };
 
 export default errorHandler;

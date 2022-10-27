@@ -13,7 +13,7 @@ class CarService implements IService<ICar> {
   }
 
   public async create(obj:ICar):Promise<ICar> {
-    console.log(obj);
+    // console.log(obj);
     // recebemos uma variável qualquer, e garantimos que ela é um objeto com formato correto utilizando o zod
     const parsed = carZodSchema.safeParse(obj);
 
